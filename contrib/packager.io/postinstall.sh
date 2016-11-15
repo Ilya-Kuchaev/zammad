@@ -141,7 +141,7 @@ if [ -n "$(which apache2 2> /dev/null)" ] || [ -n "$(which httpd 2> /dev/null)" 
 	WEBSERVER_CMD="nginx"
 	test -f /etc/nginx/sites-available/zammad.conf || cp ${ZAMMAD_DIR}/contrib/nginx/zammad.conf /etc/nginx/sites-available/zammad.conf
 	test -h ${WEBSERVER_CONF} || ln -s /etc/nginx/sites-available/zammad.conf ${WEBSERVER_CONF}
-    # centos / sles
+    # centos
     elif [ -d /etc/nginx/conf.d ]; then
 	WEBSERVER_CONF="/etc/nginx/conf.d/zammad.conf"
 	WEBSERVER_CMD="nginx"
@@ -158,7 +158,7 @@ if [ -n "$(which apache2 2> /dev/null)" ] || [ -n "$(which httpd 2> /dev/null)" 
 	a2enmod proxy
 	a2enmod proxy_http
 	a2enmod proxy_wstunnel
-    # centos / sles
+    # centos
     elif [ -d /etc/httpd/conf.d ]; then
 	WEBSERVER_CONF="/etc/httpd/conf.d/zammad.conf"
 	WEBSERVER_CMD="httpd"
